@@ -7,7 +7,7 @@
 png2jpg-for-a1111-and-NAI(旧名称:png2jpg改)でJPEG変換したNovelAI生成画像はNovelAIやAutomatic1111に取り込ませることができませんが、本ツールでPNGに変換することで、元のPNG画像と同様にNovelAIやAutomatic1111に取り込ませることが可能になります。
 
 ### 1. png2jpg-for-a1111-and-NAI(旧名称:png2jpg改)でJPEG変換したNovelAI生成画像について
-PNGに変換しメタデータを元のPNG画像と同じ形式に戻します。  
+PNG画像に変換しメタデータを元のPNG画像と同じ形式に変換します。  
 変換したPNG画像はNovelAIやAutomatic1111にメタデータを取り込ませることが可能です。
 
 ### 2. png2jpg-for-a1111-and-NAI(旧名称:png2jpg改)または、png2jpg（過去バージョン）でJPEG変換したAutomatic1111生成画像について
