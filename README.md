@@ -26,7 +26,7 @@ pip install pillow
 pip install piexif
 
 ## 使い方
-1. inputsフォルダに変換したいJPEG画像（png2jpg-for-a1111-and-NAI(旧名称:png2jpg改)または、png2jpg（過去バージョン））を入れます。※JPEG画像の拡張子は".jpg"である必要があります。
+1. inputsフォルダに変換したいJPEG画像(png2jpg-for-a1111-and-NAI(旧名称:png2jpg改)で変換した画像）を入れます。※JPEG画像の拡張子は".jpg"である必要があります。
 2. jpg2png.batをダブルクリックします。
 3. outputsフォルダにPNG画像が保存されます。
 
