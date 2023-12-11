@@ -4,10 +4,16 @@
 
 import glob
 import os
-
 from PIL import Image, ExifTags
 from PIL.PngImagePlugin import PngInfo
+from datetime import datetime
+from pywintypes import Time
 
+# Windowsの場合
+on_windows = os.name == 'nt'
+if on_windows:
+    import win32file
+    import win32con
 
 # 画像形式
 IMG_INPUT_FORMAT = 'JPEG'
@@ -83,6 +89,36 @@ for file in files:
 
     # JPEGからPNGへ変換し、pnginfoを追加
     convert_jpg_to_png_with_pnginfo(file, output_file_path)
+
+    # 日時情報を取得
+    with Image.open(file):
+        access_time   = os.path.getatime(file) # アクセス日時
+        modify_time   = os.path.getmtime(file) # 更新日時
+
+        if on_windows:
+            creation_time = os.path.getctime(file) # 作成日時
+
+    # 日付情報の設定
+    # PNGファイルのハンドルを取得（Windowsのみ）
+    if on_windows:
+        handle = win32file.CreateFile(
+            output_file_path,
+            win32con.GENERIC_WRITE,
+            win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE | win32con.FILE_SHARE_DELETE,
+            None,
+            win32con.OPEN_EXISTING,
+            0,
+            None
+        )
+
+        # JPEGファイルに元画像の作成日時、アクセス日時、更新日時を設定
+        win32file.SetFileTime(handle, Time(creation_time), Time(access_time), Time(modify_time))
+
+        # ハンドルを閉じる
+        handle.Close()
+
+    # 他のプラットフォームではアクセス日時と更新日時を設定
+    os.utime(output_file_path, (access_time, modify_time))
 
 
 
