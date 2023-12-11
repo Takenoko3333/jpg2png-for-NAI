@@ -31,7 +31,7 @@ pip install pillow
 * piexif  
 pip install piexif
 
-Windowsの場合  
+Windowsのみ 
 * pywin32  
 pip install pywin32
 
